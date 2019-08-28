@@ -26,7 +26,7 @@ function addItem(){
       console.log('Item added: ' + newItem);
       clearList();
       getItems();
-
+      newItem = $('#new-toDo').val('');
       console.log(data);
 
     },
