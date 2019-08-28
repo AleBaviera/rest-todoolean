@@ -17,6 +17,9 @@
   padding: 50px 25px;
 
   overflow: hidden;
+
+  display:  flex;
+  flex-direction: row;
 }
 
 .box{

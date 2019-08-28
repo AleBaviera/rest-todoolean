@@ -14,9 +14,6 @@ function clearList(){
 
 function addItem(){
 
-
-
-
   var newItem = $('#new-toDo').val();
 
   $.ajax({
