@@ -2,7 +2,8 @@ function init() {
     // console.log("Hello World");
     getItems();
     $(document).on('click', '.delete', deleteItems);
-    $(document).on('click', 'button', addItem);
+    $('button').click(addItem);
+
 }
 
 $(document).ready(init);
@@ -13,7 +14,7 @@ function clearList(){
 
 function addItem(){
 
-  clearList();
+
 
 
   var newItem = $('#new-toDo').val();
@@ -26,7 +27,10 @@ function addItem(){
     },
     success: function(data){
       console.log('Item added: ' + newItem);
-      printItems(data);
+      clearList();
+      getItems();
+
+      console.log(data);
 
     },
     error: function(){
