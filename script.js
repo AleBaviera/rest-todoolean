@@ -1,10 +1,42 @@
 function init() {
     // console.log("Hello World");
     getItems();
-    $(document).on('click', '.delete', deleteItems)
+    $(document).on('click', '.delete', deleteItems);
+    $(document).on('click', 'button', addItem);
 }
 
 $(document).ready(init);
+
+function clearList(){
+  $('.container').html('');
+}
+
+function addItem(){
+
+  clearList();
+
+
+  var newItem = $('#new-toDo').val();
+
+  $.ajax({
+    url:  'http://157.230.17.132:3010/todos/',
+    method: 'POST',
+    data: {
+      text: newItem,
+    },
+    success: function(data){
+      console.log('Item added: ' + newItem);
+      printItems(data);
+
+    },
+    error: function(){
+      alert('errore');
+    }
+
+  });
+
+
+}
 
 function getItems(){
 
@@ -49,7 +81,7 @@ function deleteItems(){
    url:  'http://157.230.17.132:3010/todos/'+ deletedId,
    method: 'DELETE',
    success: function(){
-     console.log('item deleted'+ deletedId);
+     console.log('item deleted: '+ deletedId);
      deletedItem.remove();
    },
    error: function(){
